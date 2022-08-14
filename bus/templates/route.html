@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{routes.cost}}
+{% for route in routes %}
+<p> {{route.name.buses.all}} </p>
+{% endfor %}
+</body>
+</html>
