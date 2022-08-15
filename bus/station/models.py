@@ -4,6 +4,9 @@ from django.db import models
 class Routes(models.Model):
     name = models.CharField(max_length=20)
 
+    def __str__(self):
+        return '{}'.format(self.name)
+
 class Bus(models.Model):
     routes = models.ForeignKey(Routes, on_delete=models.CASCADE)
     # start_place = models.CharField(max_length=20)
@@ -16,4 +19,7 @@ class Bus(models.Model):
     cost = models.IntegerField(null=True)
     trevel_time = models.CharField(max_length=10, null=True)
 
-
+# class BusRoutes(models.Model):
+#     bus_rouets = models.ForeignKey(Bus, on_delete=models.CASCADE)
+#     routes_bus = models.ForeignKey(Routes, on_delete=models.CASCADE)
+#

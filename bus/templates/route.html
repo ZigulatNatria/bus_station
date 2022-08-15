@@ -7,7 +7,7 @@
 <body>
 {{routes.cost}}
 {% for route in routes %}
-<p> {{route.name.buses.all}} </p>
+<p><a href="{% url 'by_routes' route.pk %}">{{ route.name }}</a></p>
 {% endfor %}
 </body>
 </html>
