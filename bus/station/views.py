@@ -5,7 +5,7 @@ from django.views.generic import ListView
 
 class RouteList(ListView):
     model = Routes
-    template_name = 'index.html'
+    template_name = 'route1.html'
     context_object_name = 'routes'
     queryset = Routes.objects.all()
 
@@ -23,3 +23,6 @@ def by_routes(request, routes_id):
     current_routes = Routes.objects.get(pk=routes_id)
     context = {'bus': bus, 'busRoute': busRoutes, 'current_routes': current_routes}
     return render (request, 'by_routes.html', context)
+
+def index(request):
+    return render(request, 'index.html')
