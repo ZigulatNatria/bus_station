@@ -22,7 +22,7 @@ def by_routes(request, routes_id):
     busRoutes = Routes.objects.all()
     current_routes = Routes.objects.get(pk=routes_id)
     context = {'bus': bus, 'busRoute': busRoutes, 'current_routes': current_routes}
-    return render (request, 'by_routes.html', context)
+    return render (request, 'by_routes1.html', context)
 
 def index(request):
     return render(request, 'index.html')
