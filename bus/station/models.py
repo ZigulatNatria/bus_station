@@ -23,3 +23,7 @@ class Bus(models.Model):
 #     bus_rouets = models.ForeignKey(Bus, on_delete=models.CASCADE)
 #     routes_bus = models.ForeignKey(Routes, on_delete=models.CASCADE)
 #
+class Vacancies(models.Model):
+    name = models.CharField(max_length=100)
+    info = models.TextField()
+

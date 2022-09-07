@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Routes, Bus #BusRoutes
-from django.views.generic import ListView
+from .models import Routes, Bus, Vacancies #BusRoutes
+from django.views.generic import ListView, DetailView
 # Create your views here.
 
 class RouteList(ListView):
@@ -16,6 +16,17 @@ class RouteList(ListView):
 #     context_object_name = 'buses'
 #     queryset = Bus.objects.all()
 
+
+class VacanciesList(ListView):
+    model = Vacancies
+    template_name = 'vacancies.html'
+    context_object_name = 'vacancies'
+    queryset = Vacancies.objects.all()
+
+class VacanciesDetail(DetailView):
+    template_name = 'vacancies_detail.html'
+    context_object_name = 'vacanci'
+    queryset = Vacancies.objects.all()
 
 def by_routes(request, routes_id):
     bus = Bus.objects.filter(routes=routes_id)

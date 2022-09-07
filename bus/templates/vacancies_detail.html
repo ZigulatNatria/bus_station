@@ -52,16 +52,14 @@
 <!--            </div>-->
 <!--        </header>-->
         <section class="projects-section bg-light" id="projects">
-            <h4 id="routes" class="mx-auto my-0 text-uppercase">Расписание</h4>
+            <h4 id="routes" class="mx-auto my-0 text-uppercase">{{ vacanci.name }}</h4>
             <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
                 <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
 <!--                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'assets/img/bg-masthead.jpg' %}" alt="..." /></div>-->
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
-                            {% for route in routes %}
-                            <p><a href="{% url 'by_routes' route.pk %}">{{ route.name }}</a></p>
-                            {% endfor %}
+                            <p>{{ vacanci.info }}</p>
 <!--                            <h4>Расписание</h4>-->
 <!--                            <p class="text-black mb-0">Чусовской автовокзал расположен по адресу ул. Свердлова, 1а, Чусовское городское поселение, Пермский край, 618200 режим работы ежедневно с 06:00 до 21:00</p>-->
                         </div>
