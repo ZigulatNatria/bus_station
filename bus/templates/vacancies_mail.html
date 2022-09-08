@@ -59,12 +59,24 @@
 <!--                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'assets/img/bg-masthead.jpg' %}" alt="..." /></div>-->
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
-                            <p>{{ vacanci.info }}</p>
-                            <button><a class="nav-link" href="mail"><font color="black">Откликнуться на вакансию</font></a></button>
-
-<!--                            <h4>Расписание</h4>-->
-<!--                            <p class="text-black mb-0">Чусовской автовокзал расположен по адресу ул. Свердлова, 1а, Чусовское городское поселение, Пермский край, 618200 режим работы ежедневно с 06:00 до 21:00</p>-->
+                            <form method="post">
+                                    <center>
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <button type="submit">Отправить</button>
+                                    </center>
+                            </form>
+                                    <center>
+                                        <font color="#fc0808" face="Impact">
+                                     {% if messages %}
+                                    {% for message in messages%}
+                                    {{message}}
+                                    {% endfor %}
+                                    {% endif %}
+                                            </font>
+                                    </center>
                         </div>
+
                     </div>
                 </div>
 <!--                 Project One Row-->
