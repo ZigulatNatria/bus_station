@@ -65,3 +65,6 @@ def contact(request):
 
 def index(request):
     return render(request, 'index.html')
+
+def qq(request):
+    return render(request, 'qq.html')

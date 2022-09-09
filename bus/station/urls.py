@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RouteList, VacanciesList, VacanciesDetail, by_routes, index, contact
+from .views import RouteList, VacanciesList, VacanciesDetail, by_routes, index, contact, qq
 
 urlpatterns =[
     path('', index, name='index'),
@@ -8,4 +8,5 @@ urlpatterns =[
     path('vacancies', VacanciesList.as_view(), name='vacancies'),
     path('<int:pk>', VacanciesDetail.as_view(), name='vacancies_detail'),
     path('mail', contact, name='contact'),
+    path('qq', qq, name='qq'),
 ]
