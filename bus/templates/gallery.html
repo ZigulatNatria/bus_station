@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block route %}
+<h4 id="routes" class="mx-auto my-0 text-uppercase">Фотографии</h4>
+{% endblock route %}
+
+{% block history %}
+                 <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="featured-text text-center text-lg-left">
+                            {% for gallery in galleries %}
+                            <p>{{ gallery.name }}</p>
+                            <p><a href="{% url 'by_galleries' gallery.pk %}"><img src="{{MEDIA_URL}}{{ gallery.cover_gallery.url }}"></a></p>
+                            <p>{{ gallery.info_gallery }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+{% endblock history %}
+
+</body>
+</html>

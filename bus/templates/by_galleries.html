@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block route %}
+<h4 id="routes" class="mx-auto my-0 text-uppercase">{{current_routes.name}}</h4>
+{% endblock route %}
+
+{% block history %}
+                {% for my_image in image %}
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div class="col-xl-4 col-lg-5">
+                        <div id="bus-text" class="featured-text text-center text-lg-left">
+                            <p><img src="{{MEDIA_URL}}{{my_image.image.url}}"></p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+{% endblock history %}
+
+</body>
+</html>

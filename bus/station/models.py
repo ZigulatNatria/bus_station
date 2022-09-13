@@ -1,11 +1,13 @@
 from django.db import models
 
+
 # Create your models
 class Routes(models.Model):
     name = models.CharField(max_length=20)
 
     def __str__(self):
         return '{}'.format(self.name)
+
 
 class Bus(models.Model):
     routes = models.ForeignKey(Routes, on_delete=models.CASCADE)
@@ -22,8 +24,31 @@ class Bus(models.Model):
 # class BusRoutes(models.Model):
 #     bus_rouets = models.ForeignKey(Bus, on_delete=models.CASCADE)
 #     routes_bus = models.ForeignKey(Routes, on_delete=models.CASCADE)
-#
+
+
 class Vacancies(models.Model):
     name = models.CharField(max_length=100)
     info = models.TextField()
 
+    class Meta:
+        verbose_name_plural = 'Вакансия'
+        verbose_name = 'Вакансии'
+
+
+class Gallery(models.Model):
+    name = models.CharField(max_length=100)
+    info_gallery = models.TextField()
+    cover_gallery = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')
+
+    class Meta:
+        verbose_name_plural = 'Альбом'
+        verbose_name = 'Альбомы'
+
+
+class Photo(models.Model):
+    image = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')
+    photoGallery = models.ForeignKey('Gallery', null=True, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = 'Фотография'
+        verbose_name = 'Фотографии'

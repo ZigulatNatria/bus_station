@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Routes, Bus, Vacancies #BusRoutes
+from .models import Routes, Bus, Vacancies, Gallery, Photo #BusRoutes
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
 from django.http import HttpResponse
@@ -27,10 +27,27 @@ class VacanciesList(ListView):
     context_object_name = 'vacancies'
     queryset = Vacancies.objects.all()
 
+
 class VacanciesDetail(DetailView):
     template_name = 'vacancies_detail.html'
     context_object_name = 'vacanci'
     queryset = Vacancies.objects.all()
+
+
+class GalleryListlView(ListView):
+    model = Gallery
+    context_object_name = 'galleries'
+    template_name = 'gallery.html'
+    queryset = Gallery.objects.all()
+
+
+def by_galleries(request, photoGallery_id):
+    image = Photo.objects.filter(photoGallery=photoGallery_id)
+    galleryPhoto = Gallery.objects.all()
+    current_gallery = Gallery.objects.get(pk=photoGallery_id)
+    context = {'image': image, 'galleryPhoto': galleryPhoto, 'current_gallery': current_gallery}
+    return render(request, 'by_galleries.html', context)
+
 
 def by_routes(request, routes_id):
     bus = Bus.objects.filter(routes=routes_id)
