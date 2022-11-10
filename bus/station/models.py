@@ -52,3 +52,8 @@ class Photo(models.Model):
     class Meta:
         verbose_name_plural = 'Фотография'
         verbose_name = 'Фотографии'
+
+class News(models.Model):
+    news_header = models.CharField(max_length=100, null=True)
+    text = models.TextField(null=True)
+    image = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')

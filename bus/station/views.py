@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Routes, Bus, Vacancies, Gallery, Photo #BusRoutes
+from .models import Routes, Bus, Vacancies, Gallery, Photo, News #BusRoutes
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
 from django.http import HttpResponse
@@ -32,6 +32,18 @@ class VacanciesDetail(DetailView):
     template_name = 'vacancies_detail.html'
     context_object_name = 'vacanci'
     queryset = Vacancies.objects.all()
+
+class NewsList(ListView):
+    model = News
+    template_name = 'index.html'
+    context_object_name = 'news'
+    queryset = News.objects.all()
+
+
+class NewsDetail(DetailView):
+    template_name = 'news_detail.html'
+    context_object_name = 'news_detail'
+    queryset = News.objects.all()
 
 
 class GalleryListlView(ListView):
@@ -80,8 +92,8 @@ def contact(request):
     form = ContactForm()
     return render(request, "vacancies_mail.html", {'form': form})
 
-def index(request):
-    return render(request, 'index.html')
-
-def qq(request):
-    return render(request, 'qq.html')
+# def index(request):
+#     return render(request, 'index.html')
+#
+# def qq(request):
+#     return render(request, 'qq.html')
