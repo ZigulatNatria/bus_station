@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+<!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <h1 class="mx-auto my-0 text-uppercase">Автовокзал</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+{% endblock content %}
+{% block history %}
+<!-- Featured Project Row-->
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src='/static/assets/img/bg-masthead.jpg' alt="..." /></div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="featured-text text-center text-lg-left">
+                            <h4>О предприятии</h4>
+                            <p class="text-black-50 mb-0">Чусовской автовокзал расположен по адресу ул. Свердлова, 1а, Чусовское городское поселение, Пермский край, 618200 режим работы ежедневно с 06:00 до 21:00</p>
+                        </div>
+                    </div>
+                </div>
+{% endblock history %}
+</body>
+</html>
