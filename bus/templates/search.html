@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+    <body>
+    {% block content %}
+    {% for n in news %}
+        {{n.news_header}}
+        {{n.text}}
+    {% endfor %}
+    {% endblock content %}
+    </body>
+</html>

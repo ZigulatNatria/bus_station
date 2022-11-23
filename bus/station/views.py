@@ -92,8 +92,15 @@ def contact(request):
     form = ContactForm()
     return render(request, "vacancies_mail.html", {'form': form})
 
-# def index(request):
-#     return render(request, 'index.html')
-#
-# def qq(request):
-#     return render(request, 'qq.html')
+
+def search(request):
+    search_query = request.GET.get('search', '') # передаётся имя ввода (строка поиска)
+
+# если значение search_query существует (в строку поиска введён текст) ищем в нужных полях введённый текст
+    if search_query:
+        news = News.objects.filter(news_header__icontains=search_query) #TODO доделать поиск
+    else:
+        news = News.objects.all()
+    context = {'news': news}
+    return render(request, 'search.html', context)
+
