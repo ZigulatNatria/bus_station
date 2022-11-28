@@ -27,6 +27,7 @@ class Bus(models.Model):
 
 
 class Vacancies(models.Model):
+    vacancies_img = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')
     name = models.CharField(max_length=100)
     info = models.TextField()
 

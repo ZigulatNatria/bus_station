@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+    <body>
+    {% block content %}
+    <div class="featured-text text-center text-lg-left">
+        <form method="post">
+            <center>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Отправить</button>
+            </center>
+        </form>
+            <center>
+                <font color="#fc0808" face="Impact">
+            {% if messages %}
+            {% for message in messages%}
+            {{message}}
+            {% endfor %}
+            {% endif %}
+                </font>
+            </center>
+    </div>
+    {% endblock content %}
+    </body>
+</html>

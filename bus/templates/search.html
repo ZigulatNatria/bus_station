@@ -4,8 +4,12 @@
     <body>
     {% block content %}
     {% for n in news %}
-        {{n.news_header}}
-        {{n.text}}
+      <div class="col-lg-5">
+        <a href="{% url 'news_detail' n.id %}"><h3 class="font-weight-light">{{ n.news_header }}</h3></a>
+        <div class="card h-100">
+            <p>{{ n.text|truncatewords:20 }}</p>
+        </div>
+    </div>
     {% endfor %}
     {% endblock content %}
     </body>

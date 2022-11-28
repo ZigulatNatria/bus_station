@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+    <body>
+    {% block content %}
+    <div class="container px-4 px-lg-5">
+            <!-- Heading Row-->
+            <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{{MEDIA_URL}}{{vacanci.vacancies_img.url}}" /></div>
+                <div class="col-lg-5">
+                    <h1 class="font-weight-light">{{ vacanci.name }}</h1>
+                        <div class="card h-100">
+                            <p>{{ vacanci.info }}</p>
+                            <button><a class="nav-link" href="{% url 'contact' %}"><font color="black">Откликнуться на вакансию</font></a></button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    {% endblock content %}
+    </body>
+</html>

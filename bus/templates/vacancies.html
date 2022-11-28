@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+    <body>
+    {% block content %}
+    {%for vacanci in vacancies %}
+      <div class="col-lg-5">
+          <p><a href="{% url 'vacancies_detail' vacanci.id %}">{{ vacanci.name }}</a></p>
+      </div>
+    {% endfor %}
+    {% endblock content %}
+    </body>
+</html>
