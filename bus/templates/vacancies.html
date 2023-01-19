@@ -3,11 +3,28 @@
 <html lang="en">
     <body>
     {% block content %}
-    {%for vacanci in vacancies %}
-      <div class="col-lg-5">
-          <p><a href="{% url 'vacancies_detail' vacanci.id %}">{{ vacanci.name }}</a></p>
-      </div>
-    {% endfor %}
+    <div class="container px-4 px-lg-5">
+     <div class="row gx-4 gx-lg-5 my-5">
+        {% for vacanci in vacancies %}
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <img src="{{MEDIA_URL}}{{vacanci.vacancies_img.url}}">
+                <div class="card-body">
+                    <h2 class="card-title">{{ vacanci.name }}</h2>
+                    <p class="card-text">{{ vacanci.info|truncatewords:20 }}</p>
+                </div>
+                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'vacancies_detail' vacanci.id %}">Смотреть</a></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+
+
+
+
+
+
     {% endblock content %}
     </body>
 </html>
