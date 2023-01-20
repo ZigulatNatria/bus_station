@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Routes, Bus, Vacancies, Gallery, Photo, News #BusRoutes
+from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity #BusRoutes
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
 from django.http import HttpResponse
@@ -104,3 +104,11 @@ def search(request):
     context = {'news': news}
     return render(request, 'search.html', context)
 
+def timetable_all(request):
+    return render(request, 'timetable.html')
+
+class CityBus(ListView):
+    model = RoutesCity
+    template_name = 'city_bus.html'
+    context_object_name = 'buses'
+    queryset = RoutesCity.objects.all()

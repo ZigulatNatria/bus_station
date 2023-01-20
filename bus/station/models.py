@@ -61,3 +61,10 @@ class News(models.Model):
 
     def __str__(self):
         return '{}'.format(self.news_header) #TODO перепилить на все модели
+
+
+class RoutesCity(models.Model):
+    number = models.CharField(max_length=20)
+    track = models.CharField(max_length=100)
+    image_route = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')
+
