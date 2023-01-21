@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+    <body>
+    {% block content %}
+    <div class="container px-4 px-lg-5">
+            <!-- Heading Row-->
+            <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{{MEDIA_URL}}{{bus_detail.image_route.url}}" /></div>
+            </div>
+        </div>
+    {% endblock content %}
+    </body>
+</html>

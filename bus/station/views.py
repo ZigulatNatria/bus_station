@@ -112,3 +112,9 @@ class CityBus(ListView):
     template_name = 'city_bus.html'
     context_object_name = 'buses'
     queryset = RoutesCity.objects.all()
+
+
+class CityBusDetail(DetailView):
+    template_name = 'city_bus_detail.html'
+    context_object_name = 'bus_detail'
+    queryset = RoutesCity.objects.all()
