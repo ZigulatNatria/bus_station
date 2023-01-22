@@ -5,6 +5,9 @@ from django.db import models
 class Routes(models.Model):
     name = models.CharField(max_length=20)
 
+    class Meta:
+        verbose_name = 'Маршрут'
+
     def __str__(self):
         return '{}'.format(self.name)
 
@@ -21,6 +24,12 @@ class Bus(models.Model):
     cost = models.IntegerField(null=True)
     trevel_time = models.CharField(max_length=10, null=True)
 
+    def __str__(self):
+        return 'Автобус маршрута' + ' ' + '{}'.format(self.routes)
+
+    class Meta:
+        verbose_name = 'Автобус'
+
 # class BusRoutes(models.Model):
 #     bus_rouets = models.ForeignKey(Bus, on_delete=models.CASCADE)
 #     routes_bus = models.ForeignKey(Routes, on_delete=models.CASCADE)
@@ -35,6 +44,9 @@ class Vacancies(models.Model):
         verbose_name_plural = 'Вакансия'
         verbose_name = 'Вакансии'
 
+    def __str__(self):
+        return self.name
+
 
 class Gallery(models.Model):
     name = models.CharField(max_length=100)
@@ -45,6 +57,9 @@ class Gallery(models.Model):
         verbose_name_plural = 'Альбом'
         verbose_name = 'Альбомы'
 
+    def __str__(self):
+        return self.name
+
 
 class Photo(models.Model):
     image = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')
@@ -54,10 +69,16 @@ class Photo(models.Model):
         verbose_name_plural = 'Фотография'
         verbose_name = 'Фотографии'
 
+    def __str__(self):
+        return 'Фотография альбома' + ' ' + '{}'.format(self.photoGallery)
+
 class News(models.Model):
     news_header = models.CharField(max_length=100, null=True)
     text = models.TextField(null=True)
     image = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')
+
+    class Meta:
+        verbose_name = 'Новости'
 
     def __str__(self):
         return '{}'.format(self.news_header) #TODO перепилить на все модели
@@ -68,3 +89,8 @@ class RoutesCity(models.Model):
     track = models.CharField(max_length=100)
     image_route = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')
 
+    def __str__(self):
+        return self.number
+
+    class Meta:
+        verbose_name = 'Городские маршруты'
