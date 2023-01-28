@@ -1,5 +1,8 @@
 from captcha.fields import CaptchaField
 from django import forms
+from django.forms import ModelForm, CharField
+from .models import RoutesCity
+from tinymce.widgets import TinyMCE
 
 
 class ContactForm(forms.Form):
@@ -9,3 +12,16 @@ class ContactForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea,
                               max_length=2000, label='Осебе')
     captcha = CaptchaField() #поле для капчи
+
+
+class RoutesCityForm(ModelForm):
+
+    content = CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30})) # Виджет редактора
+
+    class Meta:
+        model = RoutesCity
+        fields = [
+            'number',
+            'track',
+            'content',
+        ]

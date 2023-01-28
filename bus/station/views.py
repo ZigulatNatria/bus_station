@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity #BusRoutes
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib import messages
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
-from .forms import ContactForm
+from .forms import ContactForm, RoutesCityForm
 # Create your views here.
 
 class RouteList(ListView):
@@ -118,3 +118,17 @@ class CityBusDetail(DetailView):
     template_name = 'city_bus_detail.html'
     context_object_name = 'bus_detail'
     queryset = RoutesCity.objects.all()
+
+
+class RoutesAddView(CreateView):
+    model = RoutesCity
+    template_name = 'create.html'
+    form_class = RoutesCityForm
+
+class RoutesUpdateView(UpdateView):
+    template_name = 'create.html'
+    form_class = RoutesCityForm # Форму берём ту же что и для добавления новых данных
+
+    def get_object(self, **kwargs):
+        id = self.kwargs.get('pk')
+        return RoutesCity.objects.get(pk=id)

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<body>
+{% block content %}
+    <div class="centrovoi">
+        <form method="post">
+        <div class="col-lg-5 align-items-center my-5">
+          {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit" value="Сохранить">
+        </div>
+        </form>
+    </div>
+
+
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+  <script>
+        tinymce.init({
+          selector: 'textarea',  // change this value according to your HTML
+          width: 900,
+          height: 500,
+          plugins: 'image table',
+          menubar: 'insert | file edit view table',
+          toolbar: 'image | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | table',
+          image_uploadtab: false
+          });
+ </script>
+
+{% endblock content %}
+</body>
+</html>

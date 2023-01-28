@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce.models import HTMLField
 
 
 # Create your models
@@ -87,10 +88,14 @@ class News(models.Model):
 class RoutesCity(models.Model):
     number = models.CharField(max_length=20)
     track = models.CharField(max_length=100)
-    image_route = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')
+    content = HTMLField()
 
     def __str__(self):
         return self.number
 
     class Meta:
         verbose_name = 'Городские маршруты'
+
+    def get_absolute_url(self):
+
+        return f'/bus/city_bus/'

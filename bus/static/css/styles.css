@@ -94,6 +94,15 @@ body {
   width:70px;
 }
 
+.centrovoi {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: 30%;
+    text-align: center;
+}
+
 #page {
   background: url(static/img/tv_70.png) 0 0 repeat fixed, url(static/img/bridge.jpg) 50% 50% no-repeat fixed, #59ABCE;
   background-size: auto, cover;
@@ -336,7 +345,7 @@ td,
 th {
   border-color: inherit;
   border-style: solid;
-  border-width: 0;
+  /* border-width: 0; */
 }
 
 label {

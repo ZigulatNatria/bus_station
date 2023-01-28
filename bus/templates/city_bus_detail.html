@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <body>
     {% block content %}
-    <div class="container px-4 px-lg-5">
-            <!-- Heading Row-->
-            <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{{MEDIA_URL}}{{bus_detail.image_route.url}}" /></div>
-            </div>
+    <div class="centrovoi">
+    <div class="col-lg-5 align-items-center my-5">
+        <div class="card h-100">
+            <p><h1>{{ bus_detail.number }} {{ bus_detail.track }}</h1></p>
+            <p><a class="btn btn-primary btn-sm" href="{% url 'city_bus_update' bus_detail.id %}">Редактировать</a></p>
+         <p>{{ bus_detail.content | safe }}</p>
         </div>
+    </div>
+    </div>
+
+
     {% endblock content %}
     </body>
 </html>
