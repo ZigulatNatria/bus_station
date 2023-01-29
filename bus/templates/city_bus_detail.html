@@ -7,13 +7,13 @@
     <div class="col-lg-5 align-items-center my-5">
         <div class="card h-100">
             <p><h1>{{ bus_detail.number }} {{ bus_detail.track }}</h1></p>
+            {% if is_aut %}
             <p><a class="btn btn-primary btn-sm" href="{% url 'city_bus_update' bus_detail.id %}">Редактировать</a></p>
+            {% endif %}
          <p>{{ bus_detail.content | safe }}</p>
         </div>
     </div>
     </div>
-
-
     {% endblock content %}
     </body>
 </html>

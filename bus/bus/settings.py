@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tinymce',
     'station',
+    'sign',
     'captcha',    #Для капчи
 ]
 
@@ -140,6 +141,10 @@ EMAIL_HOST_PASSWORD = password  # пароль от почты
 EMAIL_USE_SSL = True  # Яндекс использует ssl, подробнее о том, что это, почитайте в дополнительных источниках, но включать его здесь обязательно
 
 CAPTCHA_FONT_SIZE = 30
+
+LOGIN_URL = '/sign/login/'
+LOGIN_REDIRECT_URL = '/bus/'   #По этому пути редиректится после авторизации
+
 
 # Необходимо для работы редактора
 

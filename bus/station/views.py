@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity #BusRoutes
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
@@ -113,11 +114,21 @@ class CityBus(ListView):
     context_object_name = 'buses'
     queryset = RoutesCity.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_aut'] = self.request.user.groups.exists()
+        return context
+
 
 class CityBusDetail(DetailView):
     template_name = 'city_bus_detail.html'
     context_object_name = 'bus_detail'
     queryset = RoutesCity.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_aut'] = self.request.user.groups.exists()
+        return context
 
 
 class RoutesAddView(CreateView):
