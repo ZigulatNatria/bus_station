@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity #BusRoutes
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
@@ -143,3 +143,9 @@ class RoutesUpdateView(UpdateView):
     def get_object(self, **kwargs):
         id = self.kwargs.get('pk')
         return RoutesCity.objects.get(pk=id)
+
+class RoutesDeleteView(DeleteView):
+    context_object_name = 'routes'
+    template_name = 'delete_routes.html'
+    queryset = RoutesCity.objects.all()
+    success_url = '/bus/city_bus/'

@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import RouteList, VacanciesList, VacanciesDetail, by_routes, contact,\
     GalleryListlView, NewsList, by_galleries, NewsDetail, search, timetable_all, \
-    CityBus, CityBusDetail, RoutesAddView, RoutesUpdateView
+    CityBus, CityBusDetail, RoutesAddView, RoutesUpdateView, RoutesDeleteView
 
 urlpatterns =[
     path('', NewsList.as_view() , name='news'),
@@ -19,4 +19,5 @@ urlpatterns =[
     path('city_bus/<int:pk>/', CityBusDetail.as_view(), name='city_bus_detail'),
     path('city_bus_add/', RoutesAddView.as_view(), name='city_bus_add'),
     path('city_bus_update/<int:pk>/', RoutesUpdateView.as_view(), name='city_bus_update'),
+    path('city_bus_delete/<int:pk>/', RoutesDeleteView.as_view(), name='city_bus_delete'),
 ]

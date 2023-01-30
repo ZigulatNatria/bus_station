@@ -16,6 +16,7 @@
                     <a class="btn btn-primary btn-sm" href="{% url 'city_bus_detail' bus.id %}">Смотреть</a>
                     {% if is_aut %}
                     <a class="btn btn-primary btn-sm" href="{% url 'city_bus_update' bus.id %}">Редактировать</a>
+                    <a class="btn btn-primary btn-sm" href="{% url 'city_bus_delete' bus.id %}">Удалить</a>
                     {% endif %}
                 </div>
             </div>
