@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib import messages
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
-from .forms import ContactForm, RoutesCityForm
+from .forms import ContactForm, RoutesCityForm, NewsForm
 # Create your views here.
 
 class RouteList(ListView):
@@ -39,6 +39,11 @@ class NewsList(ListView):
     template_name = 'index.html'
     context_object_name = 'news'
     queryset = News.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_aut'] = self.request.user.groups.exists()
+        return context
 
 
 class NewsDetail(DetailView):
@@ -136,6 +141,7 @@ class RoutesAddView(CreateView):
     template_name = 'create.html'
     form_class = RoutesCityForm
 
+
 class RoutesUpdateView(UpdateView):
     template_name = 'create.html'
     form_class = RoutesCityForm # Форму берём ту же что и для добавления новых данных
@@ -144,8 +150,15 @@ class RoutesUpdateView(UpdateView):
         id = self.kwargs.get('pk')
         return RoutesCity.objects.get(pk=id)
 
+
 class RoutesDeleteView(DeleteView):
     context_object_name = 'routes'
     template_name = 'delete_routes.html'
     queryset = RoutesCity.objects.all()
     success_url = '/bus/city_bus/'
+
+
+class NewsAddView(CreateView):
+    model = News
+    template_name = 'create.html'
+    form_class = NewsForm

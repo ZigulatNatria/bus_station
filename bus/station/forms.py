@@ -1,7 +1,7 @@
 from captcha.fields import CaptchaField
 from django import forms
 from django.forms import ModelForm, CharField
-from .models import RoutesCity
+from .models import RoutesCity, News
 from tinymce.widgets import TinyMCE
 
 
@@ -24,4 +24,16 @@ class RoutesCityForm(ModelForm):
             'number',
             'track',
             'content',
+        ]
+
+class NewsForm(ModelForm):
+
+    text = CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30})) # Виджет редактора
+
+    class Meta:
+        model = News
+        fields = [
+            'news_header',
+            'image',
+            'text',
         ]

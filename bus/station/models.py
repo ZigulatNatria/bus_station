@@ -75,7 +75,7 @@ class Photo(models.Model):
 
 class News(models.Model):
     news_header = models.CharField(max_length=100, null=True)
-    text = models.TextField(null=True)
+    text = HTMLField()
     image = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')
 
     class Meta:
@@ -83,6 +83,22 @@ class News(models.Model):
 
     def __str__(self):
         return '{}'.format(self.news_header) #TODO перепилить на все модели
+
+    def get_absolute_url(self):
+
+        return f'/bus/'
+
+
+# class News(models.Model):
+#     news_header = models.CharField(max_length=100, null=True)
+#     text = models.TextField(null=True)
+#     image = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')
+#
+#     class Meta:
+#         verbose_name = 'Новости'
+#
+#     def __str__(self):
+#         return '{}'.format(self.news_header) #TODO перепилить на все модели
 
 
 class RoutesCity(models.Model):

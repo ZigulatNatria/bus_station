@@ -11,7 +11,7 @@
                 <div class="col-lg-5">
                     <h1 class="font-weight-light">{{ news_detail.news_header }}</h1>
                         <div class="card h-100">
-                            <p>{{ news_detail.text }}</p>
+                            <p>{{ news_detail.text | safe }}</p>
                         </div>
                 </div>
             </div>
