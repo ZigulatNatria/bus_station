@@ -12,6 +12,14 @@
                     <h1 class="font-weight-light">{{ news_detail.news_header }}</h1>
                         <div class="card h-100">
                             <p>{{ news_detail.text | safe }}</p>
+                            {% if is_aut %}
+                                <center>
+                                    <p>
+                                        <a class="btn btn-primary btn-sm" href="{% url 'news_update' news_detail.id %}">Редактировать</a>
+                                        <a class="btn btn-primary btn-sm" href="{% url 'news_delete' news_detail.id %}">Удалить</a>
+                                    </p>
+                                </center>
+                            {% endif %}
                         </div>
                 </div>
             </div>

@@ -31,7 +31,13 @@
                             <h2 class="card-title">{{ new.news_header }}</h2>
                             <p class="card-text">{{ new.text |safe|truncatewords:15 }}</p>
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'news_detail' new.id %}">Читать</a></div>
+                        <div class="card-footer">
+                            <a class="btn btn-primary btn-sm" href="{% url 'news_detail' new.id %}">Читать</a>
+                            {% if is_aut %}
+                            <a class="btn btn-primary btn-sm" href="{% url 'news_update' new.id %}">Редактировать</a>
+                            <a class="btn btn-primary btn-sm" href="{% url 'news_delete' new.id %}">Удалить</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
                 {% endfor %}

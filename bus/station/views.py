@@ -51,6 +51,11 @@ class NewsDetail(DetailView):
     context_object_name = 'news_detail'
     queryset = News.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_aut'] = self.request.user.groups.exists()
+        return context
+
 
 class GalleryListlView(ListView):
     model = Gallery
@@ -162,3 +167,19 @@ class NewsAddView(CreateView):
     model = News
     template_name = 'create.html'
     form_class = NewsForm
+
+
+class NewsUpdateView(UpdateView):
+    template_name = 'create.html'
+    form_class = NewsForm # Форму берём ту же что и для добавления новых данных
+
+    def get_object(self, **kwargs):
+        id = self.kwargs.get('pk')
+        return News.objects.get(pk=id)
+
+
+class NewsDeleteView(DeleteView):
+    context_object_name = 'news'
+    template_name = 'delete_news.html'
+    queryset = News.objects.all()
+    success_url = '/bus/'
