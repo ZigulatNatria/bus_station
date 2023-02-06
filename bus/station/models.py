@@ -48,6 +48,9 @@ class Vacancies(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return f'/bus/vacancies'
+
 
 class Gallery(models.Model):
     name = models.CharField(max_length=100)
@@ -85,7 +88,6 @@ class News(models.Model):
         return '{}'.format(self.news_header) #TODO перепилить на все модели
 
     def get_absolute_url(self):
-
         return f'/bus/'
 
 

@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib import messages
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
-from .forms import ContactForm, RoutesCityForm, NewsForm
+from .forms import ContactForm, RoutesCityForm, NewsForm, VacanciesForm
 # Create your views here.
 
 class RouteList(ListView):
@@ -28,11 +28,22 @@ class VacanciesList(ListView):
     context_object_name = 'vacancies'
     queryset = Vacancies.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_aut'] = self.request.user.groups.exists()
+        return context
+
 
 class VacanciesDetail(DetailView):
     template_name = 'vacancies_detail.html'
     context_object_name = 'vacanci'
     queryset = Vacancies.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_aut'] = self.request.user.groups.exists()
+        return context
+
 
 class NewsList(ListView):
     model = News
@@ -183,3 +194,25 @@ class NewsDeleteView(DeleteView):
     template_name = 'delete_news.html'
     queryset = News.objects.all()
     success_url = '/bus/'
+
+
+class VacanciesAddView(CreateView):
+    model = Vacancies
+    template_name = 'create.html'
+    form_class = VacanciesForm
+
+
+class VacanciesUpdateView(UpdateView):
+    template_name = 'create.html'
+    form_class = VacanciesForm # Форму берём ту же что и для добавления новых данных
+
+    def get_object(self, **kwargs):
+        id = self.kwargs.get('pk')
+        return Vacancies.objects.get(pk=id)
+
+
+class VacanciesDeleteView(DeleteView):
+    context_object_name = 'vacanci'
+    template_name = 'delete_vacancies.html'
+    queryset = Vacancies.objects.all()
+    success_url = '/bus/vacancies'

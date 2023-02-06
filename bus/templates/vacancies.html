@@ -11,12 +11,30 @@
                 <img src="{{MEDIA_URL}}{{vacanci.vacancies_img.url}}">
                 <div class="card-body">
                     <h2 class="card-title">{{ vacanci.name }}</h2>
-                    <p class="card-text">{{ vacanci.info|truncatewords:20 }}</p>
+                    <p class="card-text">{{ vacanci.info|truncatewords:20| safe }}</p>
                 </div>
-                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'vacancies_detail' vacanci.id %}">Смотреть</a></div>
+                <div class="card-footer">
+                    <a class="btn btn-primary btn-sm" href="{% url 'vacancies_detail' vacanci.id %}">Смотреть</a>
+                    {% if is_aut %}
+                        <a class="btn btn-primary btn-sm" href="{% url 'vacancies_update' vacanci.id %}">Редактировать</a>
+                        <a class="btn btn-primary btn-sm" href="{% url 'vacancies_delete' vacanci.id %}">Удалить</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
         {% endfor %}
+         {% if is_aut %}
+             <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Добавить вакансию</h2>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary btn-sm" href="{% url 'vacancies_add' %}">Добавить</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
     </div>
 
