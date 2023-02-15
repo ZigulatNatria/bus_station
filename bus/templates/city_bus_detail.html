@@ -3,20 +3,20 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <body>
     {% block content %}
-    <div class="centrovoi">
-    <div class="col-lg-5 align-items-center my-5">
-        <div class="card h-100">
-            <p><h1>{{ bus_detail.number }} {{ bus_detail.track }}</h1></p>
-            {% if is_aut %}
-            <p>
-                <a class="btn btn-primary btn-sm" href="{% url 'city_bus_update' bus_detail.id %}">Редактировать</a>
-                <a class="btn btn-primary btn-sm" href="{% url 'city_bus_delete' bus_detail.id %}">Удалить</a>
-            </p>
-            {% endif %}
-         <p>{{ bus_detail.content | safe }}</p>
+
+        <div class="col-lg-5 align-items-center my-5">
+            <div class="card h-100">
+                <p><h1>{{ bus_detail.number }} {{ bus_detail.track }}</h1></p>
+                {% if is_aut %}
+                <p>
+                    <a class="btn btn-primary btn-sm" href="{% url 'city_bus_update' bus_detail.id %}">Редактировать</a>
+                    <a class="btn btn-primary btn-sm" href="{% url 'city_bus_delete' bus_detail.id %}">Удалить</a>
+                </p>
+                {% endif %}
+             <p>{{ bus_detail.content | safe }}</p>
+            </div>
         </div>
-    </div>
-    </div>
+
     {% endblock content %}
     </body>
 </html>
