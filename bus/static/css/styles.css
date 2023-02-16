@@ -84,13 +84,38 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-image: url(/static/img/fon.jpg);
+  background-image: url(/static/img/fon2.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.container1 {
+    background-color: hsla(0, 0%, 60%, 0.5);
+    padding-right: 3rem !important;
+    padding-left: 3rem !important;
+    min-height: 100vh;
+}
+
+.cont-1 {
+    margin-top: -20px;
+    padding-top:20px;
+
+}
+
+.hello {
+  background-color: #f4f2e5;
+  margin: 3px;
+
+}
+
+.hello1 {
+  background-color: #f4f2e5;
+  margin: 10px;
+
 }
 
 .logo {
@@ -649,6 +674,7 @@ progress {
 }
 
 .container,
+.container1,
 .container-fluid,
 .container-xxl,
 .container-xl,
@@ -663,27 +689,27 @@ progress {
 }
 
 @media (min-width: 576px) {
-  .container-sm, .container {
+  .container-sm, .container, .container1 {
     max-width: 540px;
   }
 }
 @media (min-width: 768px) {
-  .container-md, .container-sm, .container {
+  .container-md, .container-sm, .container, .container1 {
     max-width: 720px;
   }
 }
 @media (min-width: 992px) {
-  .container-lg, .container-md, .container-sm, .container {
+  .container-lg, .container-md, .container-sm, .container, .container1 {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
-  .container-xl, .container-lg, .container-md, .container-sm, .container {
+  .container-xl, .container-lg, .container-md, .container-sm, .container, .container1 {
     max-width: 1140px;
   }
 }
 @media (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container,.container1 {
     max-width: 1320px;
   }
 }
@@ -9827,7 +9853,7 @@ textarea.form-control-lg {
     animation-duration: 2s;
     animation-name: slidein;
     animation-iteration-count: 1;
-    opacity: 0.9;
+    opacity: 1;
   }
 
   @keyframes slidein {
@@ -9836,7 +9862,7 @@ textarea.form-control-lg {
     }
 
     to {
-      opacity: 0.9;
+      opacity: 1;
     }
   }
 
