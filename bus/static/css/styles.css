@@ -94,14 +94,14 @@ body {
 }
 
 .container1 {
-    background-color: hsla(0, 0%, 60%, 0.5);
+    background-color: hsla(0, 0%, 60%, 0.7);
     padding-right: 3rem !important;
     padding-left: 3rem !important;
     min-height: 100vh;
 }
 
 .cont-1 {
-    margin-top: -20px;
+    margin-top: 0px;
     padding-top:20px;
 
 }

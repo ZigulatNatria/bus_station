@@ -13,7 +13,7 @@
                     <a class="btn btn-primary btn-sm" href="{% url 'city_bus_delete' bus_detail.id %}">Удалить</a>
                 </p>
                 {% endif %}
-             <p>{{ bus_detail.content | safe }}</p>
+             {{ bus_detail.content | safe }}
             </div>
         </div>
 
