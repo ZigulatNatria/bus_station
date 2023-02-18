@@ -1,5 +1,6 @@
 from django.db import models
 from tinymce.models import HTMLField
+from PIL import Image #импорт из PILLOW для обращения к изображению
 
 
 # Create your models
@@ -130,7 +131,24 @@ class Contacts(models.Model):
         return 'Контакты'
     
     
+class PhotoCarusel(models.Model):
+    images = models.ImageField(verbose_name='фото')
 
+    # Функция для преобразования загружаемой картинки к нужному размеру
+    def save(self):
+        super().save()
+        img = Image.open(self.images.path)
+
+        if img.height > 1200 or img.width > 799:
+            output_size = (1200, 799)
+            img.thumbnail(output_size)
+            img.save(self.images.path)
+
+    class Meta:
+        verbose_name = 'Фотографии главной страницы'
+
+    def __str__(self):
+        return 'Фото' + ' ' + '{}'.format(self.id)
 
 
 class RoutesCity(models.Model):

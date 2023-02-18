@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity, Contacts #BusRoutes
+from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity, Contacts, \
+    PhotoCarusel #BusRoutes
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.http import HttpResponse
@@ -55,6 +56,16 @@ class NewsList(ListView):
         context = super().get_context_data(**kwargs)
         context['is_aut'] = self.request.user.groups.exists()
         return context
+
+    @staticmethod       # Применяем декоратор для функции вызова по второй модели
+    def all_images():   # (в шаблоне обращаться view.all_images)
+        photo = list(PhotoCarusel.objects.all())  # Формируем список из всех фото кроме первого
+        current_photo = photo[1:]
+        return current_photo
+
+    @staticmethod
+    def first_images():    # Забираем только первое фото (нужно для старта карусели)
+        return PhotoCarusel.objects.all().first()
 
 
 class NewsDetail(DetailView):
