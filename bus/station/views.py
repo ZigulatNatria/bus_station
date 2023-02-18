@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity #BusRoutes
+from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity, Contacts #BusRoutes
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.http import HttpResponse
@@ -216,3 +216,10 @@ class VacanciesDeleteView(DeleteView):
     template_name = 'delete_vacancies.html'
     queryset = Vacancies.objects.all()
     success_url = '/bus/vacancies'
+
+
+class ContactsListView(ListView):
+    model = Contacts
+    context_object_name = 'contacts'
+    template_name = 'contacts.html'
+    queryset = Contacts.objects.all()

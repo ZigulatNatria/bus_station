@@ -103,6 +103,36 @@ class News(models.Model):
 #         return '{}'.format(self.news_header) #TODO перепилить на все модели
 
 
+class Contacts(models.Model):
+    director = models.CharField(max_length=100, verbose_name='ФИО руководителя', null=True, blank=True)
+    basis = models.TextField(verbose_name='На основании какого документа действет', null=True, blank=True)
+    accountant = models.CharField(max_length=100, verbose_name='ФИО главного бухгалтера', null=True, blank=True)
+    phone = models.CharField(max_length=100, verbose_name='Телефон/факс', null=True, blank=True)
+    address = models.TextField(verbose_name='Адрес', null=True, blank=True)
+    mail = models.EmailField(verbose_name='Электронная почта', null=True, blank=True)
+    inn = models.CharField(max_length=100, verbose_name='ИНН', null=True, blank=True)
+    checking_account = models.CharField(max_length=100, verbose_name='Расчётный счёт', null=True, blank=True)
+    correspondent_account = models.CharField(max_length=100, verbose_name='Корреспондентский счёт', null=True, blank=True)
+    bik = models.CharField(max_length=100, verbose_name='БИК', null=True, blank=True)
+    recipient = models.TextField(verbose_name='Получатель', null=True, blank=True)
+    okpo = models.CharField(max_length=100, verbose_name='ОКПО', null=True, blank=True)
+    okogu = models.CharField(max_length=100, verbose_name='ОКОГУ', null=True, blank=True)
+    okato = models.CharField(max_length=100, verbose_name='ОКАТО', null=True, blank=True)
+    okved = models.CharField(max_length=100, verbose_name='ОКВЭД', null=True, blank=True)
+    ogrn = models.CharField(max_length=100, verbose_name='ОГРН', null=True, blank=True)
+    bus_station_address = models.TextField(verbose_name='Адресс автовокзала', null=True, blank=True)
+    bus_station_phone = models.TextField(verbose_name='Телефон касс автовокзала', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Контакты'
+
+    def __str__(self):
+        return 'Контакты'
+    
+    
+
+
+
 class RoutesCity(models.Model):
     number = models.CharField(max_length=20)
     track = models.CharField(max_length=100)

@@ -1433,6 +1433,20 @@ progress {
   .col-lg-5 {
     flex: 0 0 auto;
     width: 41.66666667%;
+    animation-duration: 2s;
+    animation-name: slidein;
+    animation-iteration-count: 1;
+    opacity: 1;
+  }
+
+  @keyframes slidein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 
   .col-lg-6 {

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <body>
+    {% block content %}
+
+        <div class="col-lg-5 align-items-center my-5">
+            <div class="card h-100">
+                <p><h1>Контакты</h1></p>
+                {% if is_aut %}
+                <p>
+                    <a class="btn btn-primary btn-sm" href="#!">Редактировать</a>
+                    <a class="btn btn-primary btn-sm" href="#!">Удалить</a>
+                </p>
+                {% endif %}
+                {% for c in contacts %}
+                <p>Генеральный директор: {{c.director}}</p>
+                <p>{{c.basis}}</p>
+                <p>Главный бухгалтер: {{c.accountant}}</p>
+                <p>Тел / т.факс {{c.phone}}</p>
+                <p>{{c.address}}</p>
+                <p>{{c.mail}}</p>
+                <p>ИНН {{c.inn}}</p>
+                <p>р/с {{c.checking_account}}</p>
+                <p>к/с {{c.correspondent_account}}</p>
+                <p>БИК {{c.bik}}</p>
+                <p>Банк получатель: {{c.recipient}}</p>
+                <p>ОКПО {{c.okpo}}</p>
+                <p>ОКОГУ {{c.okogu}}</p>
+                <p>ОКАТО {{c.okato}}</p>
+                <p>ОКВЭД {{c.okved}}</p>
+                <p>ОГРН {{c.ogrn}}</p>
+                <p>{{c.bus_station_address}}</p>
+                <p>{{c.bus_station_phone}}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+    {% endblock content %}
+    </body>
+</html>
