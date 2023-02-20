@@ -165,3 +165,13 @@ class RoutesCity(models.Model):
     def get_absolute_url(self):
 
         return f'/bus/city_bus/'
+
+
+class History(models.Model):
+    text = HTMLField(verbose_name='Текст', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Текст про компанию'
+
+    def __str__(self):
+        return 'Текст' + ' ' + '{}'.format(self.id)

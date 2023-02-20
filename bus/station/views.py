@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity, Contacts, \
-    PhotoCarusel #BusRoutes
+    PhotoCarusel, History #BusRoutes
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.http import HttpResponse
@@ -234,3 +234,10 @@ class ContactsListView(ListView):
     context_object_name = 'contacts'
     template_name = 'contacts.html'
     queryset = Contacts.objects.all()
+
+
+class HistoryListView(ListView):
+    model = History
+    context_object_name = 'history'
+    template_name = 'history.html'
+    queryset = History.objects.all()
