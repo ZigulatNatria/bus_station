@@ -3,22 +3,14 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <body>
     {% block content %}
-        <div class="history-center">
-            <div class="col-lg-5 align-items-center my-5">
-                <div class="card h-100">
-                    <p><h1>О предприятии</h1></p>
-                    {% if is_aut %}
-                    <p>
-                        <a class="btn btn-primary btn-sm" href="#!">Редактировать</a>
-                        <a class="btn btn-primary btn-sm" href="#!">Удалить</a>
-                    </p>
-                    {% endif %}
-                    {% for h in history %}
-                    <div class="history">
-                        <p>{{h.text | safe}}</p>
-                    </div>
-                    {% endfor %}
+        <div class="container px-4 px-lg-5">
+            <div class="card my-5 py-4 text-center">
+                <div><p class="text-white m-0"><h2>О предприятии</h2></p></div>
+                {% for h in history %}
+                <div class="history">
+                    <p>{{h.text | safe}}</p>
                 </div>
+                {% endfor %}
             </div>
         </div>
     {% endblock content %}
