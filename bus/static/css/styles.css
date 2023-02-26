@@ -9943,6 +9943,15 @@ textarea.form-control-lg {
     opacity: 1;
   }
 
+  .px-lg-5-gallery {
+    padding-right: 3rem !important;
+    padding-left: 18rem !important;
+    animation-duration: 2s;
+    animation-name: slidein;
+    animation-iteration-count: 1;
+    opacity: 1;
+  }
+
   @keyframes slidein {
     from {
       opacity: 0;

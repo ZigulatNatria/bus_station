@@ -135,14 +135,14 @@ class PhotoCarusel(models.Model):
     images = models.ImageField(verbose_name='фото')
 
     # Функция для преобразования загружаемой картинки к нужному размеру
-    def save(self):
-        super().save()
-        img = Image.open(self.images.path)
-
-        if img.height > 1200 or img.width > 799:
-            output_size = (1200, 799)
-            img.thumbnail(output_size)
-            img.save(self.images.path)
+    # def save(self):
+    #     super().save()
+    #     img = Image.open(self.images.path)
+    #     fixed_height = 800
+    #     height_percent = (fixed_height / float(img.size[1]) )
+    #     width_size = int((float(img.size[1]) * float(height_percent)))
+    #     img = img.resize((fixed_height, width_size))
+    #     img.save(self.images.path)
 
     class Meta:
         verbose_name = 'Фотографии главной страницы'
