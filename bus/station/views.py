@@ -132,9 +132,13 @@ def search(request):
 # если значение search_query существует (в строку поиска введён текст) ищем в нужных полях введённый текст
     if search_query:
         news = News.objects.filter(news_header__icontains=search_query) #TODO доделать поиск
+        vacancies = Vacancies.objects.filter(name__icontains=search_query)
     else:
         news = News.objects.all()
-    context = {'news': news}
+        vacancies = Vacancies.objects.all()
+    context = {'news': news,
+               'vacancies': vacancies
+               }
     return render(request, 'search.html', context)
 
 def timetable_all(request):
