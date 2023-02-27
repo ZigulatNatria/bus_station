@@ -175,3 +175,48 @@ class History(models.Model):
 
     def __str__(self):
         return 'Текст' + ' ' + '{}'.format(self.id)
+
+
+class Insurer(models.Model):
+    text = HTMLField(verbose_name='Текст', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'О страховщиках'
+
+    def __str__(self):
+        return 'О страховщиках' + ' ' + '{}'.format(self.id)
+
+
+class Service(models.Model):
+    name = models.CharField(verbose_name='Название услуги', max_length=200)
+    text = HTMLField(verbose_name='Текст', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Услуги'
+
+    def __str__(self):
+        return 'Услуга' + ' ' + '{}'.format(self.name)
+
+
+class ForPassengers(models.Model):
+    name = models.CharField(verbose_name='Название услуги', max_length=200)
+    text = HTMLField(verbose_name='Текст', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Для пассажиров'
+
+    def __str__(self):
+        return 'Для пассажиров' + ' ' + '{}'.format(self.name)
+
+
+class BestEmployee(models.Model):
+    name = models.CharField(verbose_name='Имя работника', max_length=100)
+    photo = models.ImageField(verbose_name='Фотография')
+    profession = models.CharField(verbose_name='профессия', max_length=200, null=True, blank=True)
+    text = models.TextField(verbose_name='Текст', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Лучшие работники'
+
+    def __str__(self):
+        return self.name
