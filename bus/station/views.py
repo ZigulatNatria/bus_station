@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity, Contacts, \
-    PhotoCarusel, History #BusRoutes
+    PhotoCarusel, History, Insurer, Service, ForPassengers, BestEmployee #BusRoutes
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.http import HttpResponse
@@ -245,3 +245,31 @@ class HistoryListView(ListView):
     context_object_name = 'history'
     template_name = 'history.html'
     queryset = History.objects.all()
+
+
+class InsurerListView(ListView):
+    model = Insurer
+    context_object_name = 'insurer'
+    template_name = 'insurer.html'
+    queryset = Insurer.objects.all()
+
+
+class ServiceListView(ListView):
+    model = Service
+    context_object_name = 'service'
+    template_name = 'service.html'
+    queryset = Service.objects.all()
+
+
+class ForPassengersListView(ListView):
+    model = ForPassengers
+    context_object_name = 'for_passengers'
+    template_name = 'for_passengers.html'
+    queryset = ForPassengers.objects.all()
+
+
+class BestEmployeeListView(ListView):
+    model = BestEmployee
+    context_object_name = 'best_employee'
+    template_name = 'best_employee.html'
+    queryset = BestEmployee.objects.all()

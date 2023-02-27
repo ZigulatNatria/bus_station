@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <body>
+    {% block content %}
+        <div class="container px-4 px-lg-5">
+            <div class="card my-5 py-4 text-center">
+                <div><p class="text-white m-0"><h2>Перечень услуг</h2></p></div>
+                {% for s in service %}
+                <div class="history">
+                    <p>{{s.name}}</p>
+                    <p>{{s.text | safe}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock content %}
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <body>
+    {% block content %}
+        <div class="container px-4 px-lg-5">
+            <div class="card my-5 py-4 text-center">
+                <div><p class="text-white m-0"><h2>Лучшие работники</h2></p></div>
+            </div>
+            <div class="row gx-4 gx-lg-5">
+                {% for b in best_employee %}
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100 text-center">
+                        <img src="{{MEDIA_URL}}{{b.photo.url}}">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ b.name }}</h2>
+                            <h3 class="card-title">{{ b.profession }}</h3>
+                            <p class="card-text">{{ b.text | safe }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock content %}
+    </body>
+</html>
