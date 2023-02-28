@@ -220,3 +220,15 @@ class BestEmployee(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Information(models.Model):
+    name = models.CharField(verbose_name='Название документа', max_length=100)
+    text = models.TextField(verbose_name='Текст', null=True, blank=True)
+    file = models.FileField(verbose_name='Файл', upload_to='media', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Уставные документы'
+
+    def __str__(self):
+        return self.name
