@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <body>
+    {% block content %}
+        <div class="container px-4 px-lg-5">
+            <div class="card my-5 py-4 text-center">
+                <div><p class="text-white m-0"><h2>Уставные документы</h2></p></div>
+            </div>
+            {% for i in information %}
+            <div class="card my-5 py-4 text-center">
+                <div><p class="text-white m-0">
+                    <p>{{i.name}}</p>
+                    <p>{{i.text}}</p>
+                    {% if i.file %}
+                    <p><a href="{{i.file.url}}" download="{{i.file.url}}">Скачать</a></p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endblock content %}
+    </body>
+</html>
