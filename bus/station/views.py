@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render, redirect
 from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity, Contacts, \
     PhotoCarusel, History, Insurer, Service, ForPassengers, BestEmployee, Information #BusRoutes
@@ -189,7 +189,8 @@ class RoutesDeleteView(DeleteView):
     success_url = '/bus/city_bus/'
 
 
-class NewsAddView(CreateView):
+class NewsAddView(PermissionRequiredMixin, CreateView):
+    permission_required = ('station.add_news')
     model = News
     template_name = 'create.html'
     form_class = NewsForm
