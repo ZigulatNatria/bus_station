@@ -167,13 +167,15 @@ class CityBusDetail(DetailView):
         return context
 
 
-class RoutesAddView(CreateView):
+class RoutesAddView(PermissionRequiredMixin, CreateView):
+    permission_required = ('station.add_routescity')
     model = RoutesCity
     template_name = 'create.html'
     form_class = RoutesCityForm
 
 
-class RoutesUpdateView(UpdateView):
+class RoutesUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = ('station.change_routescity')
     template_name = 'create.html'
     form_class = RoutesCityForm # Форму берём ту же что и для добавления новых данных
 
@@ -182,7 +184,8 @@ class RoutesUpdateView(UpdateView):
         return RoutesCity.objects.get(pk=id)
 
 
-class RoutesDeleteView(DeleteView):
+class RoutesDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = ('station.delete_routescity')
     context_object_name = 'routes'
     template_name = 'delete_routes.html'
     queryset = RoutesCity.objects.all()
@@ -196,7 +199,8 @@ class NewsAddView(PermissionRequiredMixin, CreateView):
     form_class = NewsForm
 
 
-class NewsUpdateView(UpdateView):
+class NewsUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = ('station.change_news')
     template_name = 'create.html'
     form_class = NewsForm # Форму берём ту же что и для добавления новых данных
 
@@ -205,20 +209,23 @@ class NewsUpdateView(UpdateView):
         return News.objects.get(pk=id)
 
 
-class NewsDeleteView(DeleteView):
+class NewsDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = ('station.delete_news')
     context_object_name = 'news'
     template_name = 'delete_news.html'
     queryset = News.objects.all()
     success_url = '/bus/'
 
 
-class VacanciesAddView(CreateView):
+class VacanciesAddView(PermissionRequiredMixin, CreateView):
+    permission_required = ('station.add_vacancies')
     model = Vacancies
     template_name = 'create.html'
     form_class = VacanciesForm
 
 
-class VacanciesUpdateView(UpdateView):
+class VacanciesUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = ('station.change_vacancies')
     template_name = 'create.html'
     form_class = VacanciesForm # Форму берём ту же что и для добавления новых данных
 
@@ -227,7 +234,8 @@ class VacanciesUpdateView(UpdateView):
         return Vacancies.objects.get(pk=id)
 
 
-class VacanciesDeleteView(DeleteView):
+class VacanciesDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = ('station.delete_vacancies')
     context_object_name = 'vacanci'
     template_name = 'delete_vacancies.html'
     queryset = Vacancies.objects.all()
