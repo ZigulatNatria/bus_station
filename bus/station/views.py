@@ -115,7 +115,7 @@ def contact(request):
             try:
                 send_mail(subject, message,
                           'vachrameev.oleg@yandex.ru',
-                          ['vachrameev.oleg@yandex.ru'])
+                          ['ZigulatNatria@yandex.ru'])
             except BadHeaderError:
                 return HttpResponse('Найден некорректный заголовок')
             return redirect("/bus/vacancies")
