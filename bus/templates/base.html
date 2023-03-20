@@ -36,9 +36,9 @@
                                 <li><a class="dropdown-item" href="{% url 'best_employee' %}">Лучшие работники</a></li>
                               </ul>
                             </li>
-                        <li class="nav-item"><a class="nav-link" href="/bus/contacts">Контакты</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/bus/gallery">Фото</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/bus/time">Расписание</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}">Контакты</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">Фото</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'time' %}">Расписание</a></li>
                         <li class="nav-item">
                         <form class="search-form" action="{% url 'search' %}">
                           <input class="search-input" placeholder="поиск..." name="search">

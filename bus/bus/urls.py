@@ -22,7 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
-    path('bus/', include('station.urls')),
+    path('', include('station.urls')),
     path('tinymce/', include('tinymce.urls')),
     path('sign/', include('sign.urls'))
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # без этой настройки не будет отображения картинки
