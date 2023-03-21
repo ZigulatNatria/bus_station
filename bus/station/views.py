@@ -91,7 +91,7 @@ def by_galleries(request, photoGallery_id):
     galleryPhoto = Gallery.objects.all()
     current_gallery = Gallery.objects.get(pk=photoGallery_id)
     context = {'image': image, 'galleryPhoto': galleryPhoto, 'current_gallery': current_gallery}
-    return render(request, 'by_galleries.html', context)
+    return render(request, 'by_galleries2.html', context)
 
 
 def by_routes(request, routes_id):
