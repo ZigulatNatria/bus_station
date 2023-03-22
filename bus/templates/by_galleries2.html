@@ -22,12 +22,11 @@
 <div id="gallery">
 	<div id="panel">
 		<img id="largeImage" src="images/image_01_large.jpg" />
-		<div id="description">���� Rage</div>
 	</div>
 
 	<div id="thumbs">
 {% for img in image %}
-        <img src="/static/assets/favicon.ico" alt="описание 1" />
+        <img src="{{MEDIA_URL}}{{img.image.url}}" alt="{{img.id}}" />
 {% endfor %}
 
 	</div>
