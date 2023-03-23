@@ -90,7 +90,12 @@ def by_galleries(request, photoGallery_id):
     image = Photo.objects.filter(photoGallery=photoGallery_id)
     galleryPhoto = Gallery.objects.all()
     current_gallery = Gallery.objects.get(pk=photoGallery_id)
-    context = {'image': image, 'galleryPhoto': galleryPhoto, 'current_gallery': current_gallery}
+    first_image = Photo.objects.all().first()
+    context = {'image': image,
+               'galleryPhoto': galleryPhoto,
+               'current_gallery': current_gallery,
+               'first_image': first_image,
+               }
     return render(request, 'by_galleries3.html', context)
 
 
