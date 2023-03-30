@@ -96,7 +96,7 @@ def by_galleries(request, photoGallery_id):
                'current_gallery': current_gallery,
                'first_image': first_image,
                }
-    return render(request, 'by_galleries3.html', context)
+    return render(request, 'by_galleries4.html', context)
 
 
 def by_routes(request, routes_id):
