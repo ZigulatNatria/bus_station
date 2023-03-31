@@ -50,7 +50,7 @@ class Vacancies(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return f'/bus/vacancies'
+        return f'/vacancies'
 
 
 class Gallery(models.Model):
@@ -89,7 +89,7 @@ class News(models.Model):
         return '{}'.format(self.news_header) #TODO перепилить на все модели
 
     def get_absolute_url(self):
-        return f'/bus/'
+        return f'/'
 
 
 # class News(models.Model):
@@ -164,7 +164,7 @@ class RoutesCity(models.Model):
 
     def get_absolute_url(self):
 
-        return f'/bus/city_bus/'
+        return f'/city_bus/'
 
 
 class History(models.Model):

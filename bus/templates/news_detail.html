@@ -9,7 +9,7 @@
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
                 <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{{MEDIA_URL}}{{news_detail.image.url}}" /></div>
                 <div class="col-lg-5">
-                        <div class="card h-100">
+                        <div class="card h-100" style="padding: 0px 10px 0px;">
                             <h1 class="font-weight-light">{{ news_detail.news_header }}</h1>
                             <p>{{ news_detail.text | safe }}</p>
                             {% if is_aut %}

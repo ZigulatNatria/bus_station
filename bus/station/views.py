@@ -119,11 +119,11 @@ def contact(request):
             message = "\n".join(body.values()) #при переписывании на цифры в формах вылетает ошибка типов
             try:
                 send_mail(subject, message,
-                          'vachrameev.oleg@yandex.ru',
+                          'chus-atp@yandex.ru',
                           ['ZigulatNatria@yandex.ru'])
             except BadHeaderError:
                 return HttpResponse('Найден некорректный заголовок')
-            return redirect("/bus/vacancies")
+            return redirect("/vacancies")
         else:
             messages.error(request, 'НЕПРАВИЛЬНО ВВЕДЁН КОД С КАРТИНКИ') #сообщение если капча не верна
 
@@ -219,7 +219,7 @@ class NewsDeleteView(PermissionRequiredMixin, DeleteView):
     context_object_name = 'news'
     template_name = 'delete_news.html'
     queryset = News.objects.all()
-    success_url = '/bus/'
+    success_url = '/'
 
 
 class VacanciesAddView(PermissionRequiredMixin, CreateView):
@@ -244,7 +244,7 @@ class VacanciesDeleteView(PermissionRequiredMixin, DeleteView):
     context_object_name = 'vacanci'
     template_name = 'delete_vacancies.html'
     queryset = Vacancies.objects.all()
-    success_url = '/bus/vacancies'
+    success_url = '/vacancies'
 
 
 class ContactsListView(ListView):
