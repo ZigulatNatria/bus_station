@@ -10,7 +10,7 @@
             <div class="card h-100">
                 <img src="{{MEDIA_URL}}{{vacanci.vacancies_img.url}}">
                 <div class="card-body">
-                    <h2 class="card-title">{{ vacanci.name }}</h2>
+                    <b><p class="card-title">{{ vacanci.name }}</p></b>
                     <p class="card-text">{{ vacanci.info|truncatewords:20| safe }}</p>
                 </div>
                 <div class="card-footer">
