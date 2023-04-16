@@ -9,6 +9,7 @@
                 {% for s in service %}
                 <div class="history">
                     <p>{{s.name}}</p>
+                    <p><a href="{{s.file.url}}" download="{{s.file.url}}">Скачать прайс</a></p>
                     <p>{{s.text | safe}}</p>
                 </div>
                 {% endfor %}

@@ -11,7 +11,7 @@
                 <img src="{{MEDIA_URL}}{{gallery.cover_gallery.url}}">
                 <div class="card-body">
                     <h2 class="card-title">{{ gallery.name }}</h2>
-                    <p class="card-text">{{ vacanci.info_gallery|truncatewords:20 }}</p>
+                    <p class="card-text">{{ gallery.info_gallery }}</p>
                 </div>
                 <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'by_galleries' gallery.id %}">Смотреть</a></div>
             </div>
