@@ -9,7 +9,9 @@
                 {% for s in service %}
                 <div class="history">
                     <p>{{s.name}}</p>
+                    {% if s.file %}
                     <p><a href="{{s.file.url}}" download="{{s.file.url}}">Скачать прайс</a></p>
+                    {% endif %}
                     <p>{{s.text | safe}}</p>
                 </div>
                 {% endfor %}
