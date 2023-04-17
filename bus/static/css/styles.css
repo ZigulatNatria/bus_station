@@ -7646,7 +7646,6 @@ textarea.form-control-lg {
 .py-5 {
   padding-top: 0.5rem !important;
   padding-bottom: 3rem !important;
-  position: fixed;
   left: 0;
   bottom: -20px;
   width: 100%;
