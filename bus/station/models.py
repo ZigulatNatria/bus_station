@@ -42,6 +42,22 @@ class Vacancies(models.Model):
     name = models.CharField(max_length=100)
     info = models.TextField()
 
+    # Функция для преобразования загружаемой картинки к нужному размеру
+    # def save(self):
+    #     super().save()
+    #     img = Image.open(self.vacancies_img.path)
+    #     resized_image = img.resize((320, 320), reducing_gap=1.1)
+    #     resized_image.save(self.vacancies_img.path)
+
+    # def save(self):
+    #     super().save()
+    #     img = Image.open(self.vacancies_img.path)
+    #     fixed_height = 1000
+    #     height_percent = (fixed_height / float(img.size[1]) )
+    #     width_size = int((float(img.size[1]) * float(height_percent)))
+    #     img = img.resize((fixed_height, width_size))
+    #     img.save(self.vacancies_img.path)
+
     class Meta:
         verbose_name_plural = 'Вакансия'
         verbose_name = 'Вакансии'
