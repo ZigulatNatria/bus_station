@@ -36,6 +36,7 @@ class NewsForm(ModelForm):
             'news_header',
             'image',
             'text',
+            'file',
         ]
 
 

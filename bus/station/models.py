@@ -97,9 +97,11 @@ class News(models.Model):
     news_header = models.CharField(max_length=100, null=True)
     text = HTMLField()
     image = models.ImageField(null=True, width_field=None, height_field=None, upload_to='images/')
+    file = models.FileField(verbose_name='Файл', upload_to='media', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Новости'
+        ordering = ['-id']
 
     def __str__(self):
         return '{}'.format(self.news_header) #TODO перепилить на все модели

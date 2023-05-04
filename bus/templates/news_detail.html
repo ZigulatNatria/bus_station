@@ -7,11 +7,15 @@
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{{MEDIA_URL}}{{news_detail.image.url}}" /></div>
-                <div class="col-lg-5">
-                        <div class="card h-100" style="padding: 0px 10px 0px;">
+                <div class="col-lg-5"><img class="img-fluid rounded mb-4 mb-lg-0" src="{{MEDIA_URL}}{{news_detail.image.url}}" /></div>
+                <div class="col-lg-7">
+                        <div class="card h-100" style="padding: 0px 10px 0px; bottom: 0px">
                             <h1 class="font-weight-light">{{ news_detail.news_header }}</h1>
                             <p>{{ news_detail.text | safe }}</p>
+                            {% if news_detail.file %}
+                                Скачать:
+                                <p><a href="{{news_detail.file.url}}" download="{{news_detail.file.url}}">{{ news_detail.news_header }}</a></p>
+                            {% endif %}
                             {% if is_aut %}
                                 <center>
                                     <p>

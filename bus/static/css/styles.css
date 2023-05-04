@@ -7443,7 +7443,7 @@ textarea.form-control-lg {
 
 .my-5 {
   margin-top: 0rem !important;
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 0rem;
 }
 
 .my-auto {
@@ -7528,7 +7528,7 @@ textarea.form-control-lg {
 }
 
 .mb-5 {
-  margin-bottom: 3rem !important;
+  margin-bottom: 0rem !important;
   margin-top: 3rem;
 }
 
