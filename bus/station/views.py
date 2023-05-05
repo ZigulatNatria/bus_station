@@ -1,5 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render, redirect
+from django.template.defaultfilters import upper
+
 from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity, Contacts, \
     PhotoCarusel, History, Insurer, Service, ForPassengers, BestEmployee, Information #BusRoutes
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -7,6 +9,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from .forms import ContactForm, RoutesCityForm, NewsForm, VacanciesForm
+from django.db.models.functions import Upper, Lower
 # Create your views here.
 
 class RouteList(ListView):
@@ -136,6 +139,7 @@ def search(request):
 
 # если значение search_query существует (в строку поиска введён текст) ищем в нужных полях введённый текст
     if search_query:
+        # News.objects.filter(Q(name__icontains=value) | Q(name__icontains=value.capitalize())) #TODO нужно поставить библиотеку django-q (позволяет илспользовать "И", "ИЛИ")
         news = News.objects.filter(news_header__icontains=search_query) #TODO доделать поиск
         vacancies = Vacancies.objects.filter(name__icontains=search_query)
     else:
