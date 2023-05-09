@@ -251,3 +251,10 @@ class Information(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Timetable(models.Model):
+    name = models.CharField(verbose_name='Название блока', max_length=100)
+    text = models.TextField(verbose_name='Описание блока')
+    file = models.FileField(verbose_name='Файл', upload_to='media', null=True, blank=True)
+    link = models.URLField(verbose_name='Ссылка', null=True, blank=True)
