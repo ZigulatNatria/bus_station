@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity, Contacts, \
-    PhotoCarusel, History, Insurer, Service, ForPassengers, BestEmployee, Information
+    PhotoCarusel, History, Insurer, Service, ForPassengers, BestEmployee, Information, Timetable
 # Register your models here.
 admin.site.register(Routes)
 admin.site.register(Bus)
@@ -17,3 +17,4 @@ admin.site.register(Service)
 admin.site.register(ForPassengers)
 admin.site.register(BestEmployee)
 admin.site.register(Information)
+admin.site.register(Timetable)

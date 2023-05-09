@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+    <body>
+    {% block content %}
+    <div class="container px-4 px-lg-5">
+         <div class="row gx-4 gx-lg-5 my-5">
+             {% for t in timetable %}
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+                        <img src="{{MEDIA_URL}}{{t.image.url}}">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ t.name }}</h2>
+                            <p class="card-text">{{ t.text }}</p>
+                        </div>
+        <!--                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'city_bus' %}">Смотреть</a></div>-->
+                        <div class="card-footer">
+                            {% if t.link %}
+                                <a class="btn btn-primary btn-sm" href="{{ t.link }}">Смотреть</a>
+                            {% endif %}
+                            {% if t.file %}
+                                <a href="{{t.file.url}}" download="{{t.file.url}}">Скачать</a>
+                            {% endif %}
+                            {% if is_aut %}
+                                <a class="btn btn-primary btn-sm" href="#">Редактировать</a>
+                                <a class="btn btn-primary btn-sm" href="#">Удалить</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+             {% endfor %}
+             {% if is_aut %}
+                 <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+                        <img src="/static/img/add.png"/>
+                        <div class="card-body">
+                            <h2 class="card-title">Добавить расписание</h2>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-primary btn-sm" href="{% url 'timetable_add' %}">Добавить</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock content %}
+    </body>
+</html>

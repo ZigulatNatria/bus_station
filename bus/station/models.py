@@ -258,3 +258,13 @@ class Timetable(models.Model):
     text = models.TextField(verbose_name='Описание блока')
     file = models.FileField(verbose_name='Файл', upload_to='media', null=True, blank=True)
     link = models.URLField(verbose_name='Ссылка', null=True, blank=True)
+    image = models.ImageField(verbose_name='Фотография')
+
+    class Meta:
+        verbose_name = 'Расписания'
+
+    def get_absolute_url(self):
+        return f'/timetable/'
+
+    def __str__(self):
+        return self.name

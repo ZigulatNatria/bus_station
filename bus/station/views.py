@@ -3,12 +3,12 @@ from django.shortcuts import render, redirect
 from django.template.defaultfilters import upper
 
 from .models import Routes, Bus, Vacancies, Gallery, Photo, News, RoutesCity, Contacts, \
-    PhotoCarusel, History, Insurer, Service, ForPassengers, BestEmployee, Information #BusRoutes
+    PhotoCarusel, History, Insurer, Service, ForPassengers, BestEmployee, Information, Timetable #BusRoutes
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
-from .forms import ContactForm, RoutesCityForm, NewsForm, VacanciesForm
+from .forms import ContactForm, RoutesCityForm, NewsForm, VacanciesForm, TimetableForm
 from django.db.models.functions import Upper, Lower
 # Create your views here.
 
@@ -298,3 +298,22 @@ class InformationListView(ListView):
     context_object_name = 'information'
     template_name = 'information.html'
     queryset = Information.objects.all()
+
+
+class TimetableListView(ListView):
+    model = Timetable
+    context_object_name = 'timetable'
+    template_name = 'timetable_test.html'
+    queryset = Timetable.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_aut'] = self.request.user.groups.exists()
+        return context
+
+
+class TimetableAddView(CreateView):
+    permission_required = ('station.add_timetable')
+    model = Timetable
+    template_name = 'create_notiny.html'
+    form_class = TimetableForm
