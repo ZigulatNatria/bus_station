@@ -2,39 +2,35 @@
 {% extends 'base.html' %}
 <html lang="en">
     <body>
-    {% block content %}
-    {% for n in news %}
-     <div class="container px-4 px-lg-5">
-     <div class="row gx-4 gx-lg-5 my-5">
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <img src="{{MEDIA_URL}}{{n.image.url}}">
-                <div class="card-body">
-                    <h2 class="card-title">{{ n.news_header }}</h2>
-                    <p class="card-text">{{ n.text | truncatewords:20 | safe }}</p>
-                </div>
-                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'news_detail' n.id %}">Смотреть</a></div>
-            </div>
-        </div>
-     </div>
-     </div>
-    {% endfor %}
-    {% for v in vacancies %}
-    <div class="container px-4 px-lg-5">
-     <div class="row gx-4 gx-lg-5 my-5">
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <img src="{{MEDIA_URL}}{{v.vacancies_img.url}}">
-                <div class="card-body">
-                    <h2 class="card-title">{{ v.name }}</h2>
-                    <p class="card-text">{{ v.info | truncatewords:20 | safe }}</p>
-                </div>
-                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'vacancies_detail' v.id %}">Смотреть</a></div>
-            </div>
-        </div>
-     </div>
-     </div>
-    {% endfor %}
-    {% endblock content %}
+        {% block content %}
+             <div class="container px-4 px-lg-5">
+                 <div class="row gx-4 gx-lg-5 my-5">
+                     {% for n in news %}
+                        <div class="col-md-4 mb-5">
+                            <div class="card h-100">
+                                <img src="{{MEDIA_URL}}{{n.image.url}}">
+                                <div class="card-body">
+                                    <h2 class="card-title">{{ n.news_header }}</h2>
+                                    <p class="card-text">{{ n.text | truncatewords:20 | safe }}</p>
+                                </div>
+                                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'news_detail' n.id %}">Смотреть</a></div>
+                            </div>
+                        </div>
+                     {% endfor %}
+                     {% for v in vacancies %}
+                        <div class="col-md-4 mb-5">
+                            <div class="card h-100">
+                                <img src="{{MEDIA_URL}}{{v.vacancies_img.url}}">
+                                <div class="card-body">
+                                    <h2 class="card-title">{{ v.name }}</h2>
+                                    <p class="card-text">{{ v.info | truncatewords:20 | safe }}</p>
+                                </div>
+                                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'vacancies_detail' v.id %}">Смотреть</a></div>
+                            </div>
+                        </div>
+                     {% endfor %}
+                 </div>
+             </div>
+        {% endblock content %}
     </body>
 </html>

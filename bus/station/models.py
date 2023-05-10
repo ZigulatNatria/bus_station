@@ -262,6 +262,7 @@ class Timetable(models.Model):
 
     class Meta:
         verbose_name = 'Расписания'
+        ordering = ['-id']
 
     def get_absolute_url(self):
         return f'/timetable/'

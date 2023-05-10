@@ -57,7 +57,7 @@
                             </li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}">Контакты</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">Фото</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'time' %}">Расписание</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'timetable' %}">Расписание</a></li>
                         <li class="nav-item">
                         <form class="search-form" action="{% url 'search' %}">
                           <input class="search-input" placeholder="поиск..." name="search">
@@ -75,10 +75,8 @@
         </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container px-4 px-lg-5">
                 <p class="m-0 text-center text-white">© {% my_tag_date %}-н.в. ООО "Чусовское автотранспортное предприятие". При использование информации с сайта необходимо ссылаться на источник.</p>
                 <p class="m-0 text-center text-white">разработка сайта vachrameev.oleg@yandex.ru</p>
-            </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from .forms import ContactForm, RoutesCityForm, NewsForm, VacanciesForm, TimetableForm
-from django.db.models.functions import Upper, Lower
+from django.db.models import Q
 # Create your views here.
 
 class RouteList(ListView):
@@ -139,9 +139,11 @@ def search(request):
 
 # если значение search_query существует (в строку поиска введён текст) ищем в нужных полях введённый текст
     if search_query:
-        # News.objects.filter(Q(name__icontains=value) | Q(name__icontains=value.capitalize())) #TODO нужно поставить библиотеку django-q (позволяет илспользовать "И", "ИЛИ")
-        news = News.objects.filter(news_header__icontains=search_query) #TODO доделать поиск
-        vacancies = Vacancies.objects.filter(name__icontains=search_query)
+        # Q(позволяет илспользовать "И", "ИЛИ")
+        news = News.objects.filter(Q(news_header__icontains=search_query) | Q(news_header__icontains=search_query.capitalize())
+                                   | Q(news_header__icontains=search_query.casefold()))
+        vacancies = Vacancies.objects.filter(Q(name__icontains=search_query) | Q(name__icontains=search_query.capitalize())
+                                             | Q(name__icontains=search_query.casefold()))
     else:
         news = News.objects.all()
         vacancies = Vacancies.objects.all()
