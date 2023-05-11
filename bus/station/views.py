@@ -8,7 +8,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib import messages
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
-from .forms import ContactForm, RoutesCityForm, NewsForm, VacanciesForm, TimetableForm
+from .forms import ContactForm, RoutesCityForm, NewsForm, VacanciesForm, TimetableForm, InformationForm
 from django.db.models import Q
 # Create your views here.
 
@@ -300,6 +300,18 @@ class InformationListView(ListView):
     context_object_name = 'information'
     template_name = 'information.html'
     queryset = Information.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_aut'] = self.request.user.groups.exists()
+        return context
+
+
+class InformationAddView(CreateView):
+    permission_required = ('station.add_information')
+    model = Information
+    template_name = 'create_notiny.html'
+    form_class = InformationForm
 
 
 class TimetableListView(ListView):

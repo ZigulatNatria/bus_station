@@ -1,7 +1,7 @@
 from captcha.fields import CaptchaField
 from django import forms
 from django.forms import ModelForm, CharField
-from .models import RoutesCity, News, Vacancies, Timetable
+from .models import RoutesCity, News, Vacancies, Timetable, Information
 from tinymce.widgets import TinyMCE
 
 
@@ -63,4 +63,15 @@ class TimetableForm(ModelForm):
             'text',
             'file',
             'link',
+        ]
+
+
+class InformationForm(ModelForm):
+
+    class Meta:
+        model = Information
+        fields = [
+            'name',
+            'text',
+            'file',
         ]

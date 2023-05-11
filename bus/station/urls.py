@@ -4,7 +4,8 @@ from .views import RouteList, VacanciesList, VacanciesDetail, by_routes, contact
     CityBus, CityBusDetail, RoutesAddView, RoutesUpdateView, RoutesDeleteView, \
     NewsAddView, NewsUpdateView, NewsDeleteView, VacanciesAddView, VacanciesDeleteView, \
     VacanciesUpdateView, ContactsListView, HistoryListView, InsurerListView, ServiceListView, \
-    ForPassengersListView, BestEmployeeListView, InformationListView, TimetableListView, TimetableAddView
+    ForPassengersListView, BestEmployeeListView, InformationListView, TimetableListView, TimetableAddView, \
+    InformationAddView
 
 urlpatterns =[
     path('', NewsList.as_view() , name='news'),
@@ -38,4 +39,5 @@ urlpatterns =[
     path('information/', InformationListView.as_view(), name='information'),
     path('timetable/', TimetableListView.as_view(), name='timetable'),
     path('timetable_add/', TimetableAddView.as_view(), name='timetable_add'),
+    path('information_add/', InformationAddView.as_view(), name='information_add'),
 ]
