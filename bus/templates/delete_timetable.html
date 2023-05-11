@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <body>
+    {% block content %}
+    <div class="centrovoi">
+    <div class="col-lg-5 align-items-center my-5">
+        <div class="card h-100">
+            <p>Вы хотите удалить блок расписания?</p>
+            <p><h1>{{ timetable.name }} </h1></p>
+            <p>{{ timetable.text }}</p>
+            <form method="POST">
+                {% csrf_token %}
+                <input class="tab" type="submit" value="Удалить">
+            </form>
+        </div>
+    </div>
+    </div>
+    {% endblock content %}
+    </body>
+</html>

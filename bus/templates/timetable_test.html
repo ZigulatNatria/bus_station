@@ -22,8 +22,8 @@
                                 <a href="{{t.file.url}}" download="{{t.file.url}}">Скачать</a>
                             {% endif %}
                             {% if is_aut %}
-                                <a class="btn btn-primary btn-sm" href="#">Редактировать</a>
-                                <a class="btn btn-primary btn-sm" href="#">Удалить</a>
+                                <a class="btn btn-primary btn-sm" href="{% url 'timetable_update' t.id %}">Редактировать</a>
+                                <a class="btn btn-primary btn-sm" href="{% url 'timetable_delete' t.id %}">Удалить</a>
                             {% endif %}
                         </div>
                     </div>

@@ -307,11 +307,29 @@ class InformationListView(ListView):
         return context
 
 
-class InformationAddView(CreateView):
+class InformationAddView(PermissionRequiredMixin, CreateView):
     permission_required = ('station.add_information')
     model = Information
     template_name = 'create_notiny.html'
     form_class = InformationForm
+
+
+class InformationUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = ('station.change_information')
+    template_name = 'create_notiny.html'
+    form_class = InformationForm
+
+    def get_object(self, **kwargs):
+        id = self.kwargs.get('pk')
+        return Information.objects.get(pk=id)
+
+
+class InformationDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = ('station.delete_information')
+    context_object_name = 'information'
+    template_name = 'delete_information.html'
+    queryset = Information.objects.all()
+    success_url = '/information'
 
 
 class TimetableListView(ListView):
@@ -326,8 +344,26 @@ class TimetableListView(ListView):
         return context
 
 
-class TimetableAddView(CreateView):
+class TimetableAddView(PermissionRequiredMixin, CreateView):
     permission_required = ('station.add_timetable')
     model = Timetable
     template_name = 'create_notiny.html'
     form_class = TimetableForm
+
+
+class TimetableUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = ('station.change_timetable')
+    template_name = 'create_notiny.html'
+    form_class = TimetableForm
+
+    def get_object(self, **kwargs):
+        id = self.kwargs.get('pk')
+        return Timetable.objects.get(pk=id)
+
+
+class TimetableDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = ('station.delete_timetable')
+    context_object_name = 'timetable'
+    template_name = 'delete_timetable.html'
+    queryset = Timetable.objects.all()
+    success_url = '/timetable'

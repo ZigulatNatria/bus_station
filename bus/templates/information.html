@@ -4,11 +4,11 @@
     <body>
     {% block content %}
         <div class="container px-4 px-lg-5">
-            <div class="card my-5 py-4 text-center">
+            <div class="card my-5 py-4 text-center" style="margin-bottom: 1.5rem">
                 <div><p class="text-white m-0"><h2>Документы</h2></p></div>
             </div>
             {% for i in information %}
-            <div class="card my-5 py-4 text-center">
+            <div class="card my-5 py-4 text-center" style="margin-bottom: 1.5rem">
                 <div><p class="text-white m-0">
                     <p>{{i.name}}</p>
                     <p>{{i.text}}</p>
@@ -18,17 +18,17 @@
                 </div>
                 {% if is_aut %}
                     <div class="card-footer">
-                        <a class="btn btn-primary btn-sm" href="#">Редактировать</a>
-                        <a class="btn btn-primary btn-sm" href="#">Удалить</a>
+                        <a class="btn btn-primary btn-sm" href="{% url 'information_update' i.id %}">Редактировать</a>
+                        <a class="btn btn-primary btn-sm" href="{% url 'information_delete' i.id %}">Удалить</a>
                     </div>
                 {% endif %}
             </div>
             {% endfor %}
         </div>
         {% if is_aut %}
-            <div class="container px-4 px-lg-5">
+            <div class="container px-4 px-lg-5 text-center">
                 <div class="card-footer">
-                    <a class="btn btn-primary btn-sm" href="{% url 'information_add' %}">Добавить</a>
+                    <a class="btn btn-primary btn-sm" href="{% url 'information_add' %}">Добавить документ</a>
                 </div>
             </div>
         {% endif %}
