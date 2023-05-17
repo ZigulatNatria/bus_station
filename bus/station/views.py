@@ -93,7 +93,7 @@ def by_galleries(request, photoGallery_id):
     image = Photo.objects.filter(photoGallery=photoGallery_id)
     galleryPhoto = Gallery.objects.all()
     current_gallery = Gallery.objects.get(pk=photoGallery_id)
-    first_image = Photo.objects.all().first()
+    first_image = image.all().first()     #Выбираем первую картинку из отфильтрованного кверисета
     context = {'image': image,
                'galleryPhoto': galleryPhoto,
                'current_gallery': current_gallery,
