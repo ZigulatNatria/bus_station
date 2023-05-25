@@ -220,6 +220,7 @@ class Service(models.Model):
 class ForPassengers(models.Model):
     name = models.CharField(verbose_name='Название услуги', max_length=200)
     text = HTMLField(verbose_name='Текст', null=True, blank=True)
+    file = models.FileField(verbose_name='Файл', upload_to='media', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Для пассажиров'

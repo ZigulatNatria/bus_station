@@ -10,6 +10,10 @@
                 <div class="history">
                     <p>{{f.name}}</p>
                     <p>{{f.text | safe}}</p>
+                    {% if f.file %}
+                        Скачать:
+                        <p><a href="{{f.file.url}}" download="{{f.file.url}}">{{ f.name }}</a></p>
+                    {% endif %}
                 </div>
                 {% endfor %}
             </div>
