@@ -122,8 +122,10 @@ def contact(request):
             message = "\n".join(body.values()) #при переписывании на цифры в формах вылетает ошибка типов
             try:
                 send_mail(subject, message,
-                          'chus-atp@yandex.ru',
-                          ['otdelkadrov-atp@mail.ru'])
+                          # 'chus-atp@yandex.ru',
+                          # ['otdelkadrov-atp@mail.ru'])
+                          'vachrameev.oleg@yandex.ru',  # от кого
+                          ['zigulatnatria@yandex.ru'])  # кому
             except BadHeaderError:
                 return HttpResponse('Найден некорректный заголовок')
             return redirect("/vacancies")
